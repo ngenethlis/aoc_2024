@@ -58,7 +58,6 @@ def is_dampened_report_safe(report : List[int], removed_levels = 0) -> bool:
             inc = False
         if (1<=diff<=3) and (inc or dec):
             i+=1
-
         else:
             # either diff too big, or not inc or not dec
             removed_levels +=1
