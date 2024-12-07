@@ -1,2 +1,4 @@
 **/*/input.txt 
 # ignores input.txt in any subdirectory
+**/*/test.txt
+# similar to above
