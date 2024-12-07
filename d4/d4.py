@@ -1,7 +1,10 @@
-
-def count_p1(input_file = "input.txt"):
+def get_lines(input_file = "input.txt"):
     file = open(input_file, 'r')
     lines = file.readlines()
+    return lines
+
+def count_p1(input_file="input.txt"):
+    lines = get_lines()
     ROWS = len(lines)
     COLS = len(lines[0])
     print(f"matrix is {ROWS} by {COLS}")
@@ -35,12 +38,28 @@ def count_p1(input_file = "input.txt"):
     return res
 
 
-
+def count_p2(input_file = "input.txt"):
+    # looking at 3x3 squares
+    lines = get_lines(input_file)
+    ROWS = len(lines)
+    r = 0
+    res = 0
+    while r+2 < ROWS:
+        c = 0
+        while c+2 < len(lines[r+2]):
+            word_dr = lines[r][c] + lines[r+1][c+1] + lines[r+2][c+2]
+            word_dl = lines[r][c+2] + lines[r+1][c+1] + lines[r+2][c]
+            if (word_dr == "MAS" or word_dr == "SAM") and (word_dl == "MAS" or word_dl == "SAM"):
+                print(f"square {r},{c} to {r+2},{c+2}")
+                res+=1
+            c+=1
+        r+=1
+    return res
 
 
 
 def main():
-    c = count_p1("input.txt")
+    c = count_p2("input.txt")
     print(c)
     return 0
 
